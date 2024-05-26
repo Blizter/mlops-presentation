@@ -1,0 +1,60 @@
+services:
+  database:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_DATABASES=prefect,mlflow
+    expose:
+      - 5432
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./pg/pg-init.sh:/docker-entrypoint-initdb.d/create-multiple-postgresql-databases.sh
+
+  minio:
+    image: minio/minio:latest
+    entrypoint: ["minio", "server", "--address", "0.0.0.0:9000", "--console-address", "0.0.0.0:9001", "/data"]
+    volumes:
+      - "minio:/data"
+    ports:
+      - 9000:9000
+      - 9001:9001
+
+  server:
+    image: prefecthq/prefect:2-python3.11
+    restart: always
+    volumes:
+      - prefect:/root/.prefect
+    entrypoint: ["/opt/prefect/entrypoint.sh", "prefect", "server", "start"]
+    environment:
+      - PREFECT_UI_URL=http://127.0.0.1:4200/api
+      - PREFECT_API_URL=http://127.0.0.1:4200/api
+      - PREFECT_SERVER_API_HOST=0.0.0.0
+      - PREFECT_API_DATABASE_CONNECTION_URL=postgresql+asyncpg://postgres:postgres@database:5432/prefect
+      # Uncomment the following line if you want to use the 'S3 Bucket' storage block instead of the older 'S3' storage
+      # - EXTRA_PIP_PACKAGES=prefect-aws
+    ports:
+      - 4200:4200
+    depends_on:
+      - database
+
+  mlflow:
+    restart: always
+    build: ./mlflow
+    depends_on:
+      - minio
+      - database
+    ports:
+      - "5000:5000"
+    environment:
+      - PG_CONN=postgres:postgres@database:5432/mlflow
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+
+volumes:
+  prefect:
+  db:
+  minio:
+networks:
+  default:
+    name: prefect-network
