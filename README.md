@@ -12,6 +12,10 @@ Goal:
 
 ### minio
 
-## Model Developement
+## Model
 
-## Model Deployment
+### Ingestion
+
+### Training
+
+### Deployment

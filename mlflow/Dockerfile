@@ -1,4 +1,4 @@
-FROM ghcr.io/mlflow/mlflow
+FROM ghcr.io/mlflow/mlflow:2.13.0
 
 ARG PG_CONN
 ARG MLFLOW_S3_ENDPOINT_URL
