@@ -41,7 +41,7 @@ services:
 
   mlflow:
     restart: always
-    build: .
+    build: ./mlflow
     depends_on:
       - minio
       - database

@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 mlflow server \
     --backend-store-uri postgresql://${PG_CONN} \
