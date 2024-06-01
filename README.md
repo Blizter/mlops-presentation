@@ -2,8 +2,6 @@
 
 Goal:
 
-## Video
-
 ## Solution Used
 
 ### prefect
