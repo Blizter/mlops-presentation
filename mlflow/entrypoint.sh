@@ -1,4 +1,7 @@
 #!/bin/sh
+pip install --no-cache-dir -r requirements.txt
+
+mlflow db upgrade postgresql://${PG_CONN}
 
 mlflow server \
     --backend-store-uri postgresql://${PG_CONN} \

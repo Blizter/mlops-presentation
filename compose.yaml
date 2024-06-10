@@ -1,5 +1,4 @@
 services:
-
   ## Databases
   database:
     image: postgres:latest
@@ -13,7 +12,6 @@ services:
     volumes:
       - db:/var/lib/postgresql/data
       - ./pg/pg-init.sh:/docker-entrypoint-initdb.d/create-multiple-postgresql-databases.sh
-
   minio:
     image: minio/minio:latest
     entrypoint: ["minio", "server", "--address", "0.0.0.0:9000", "--console-address", "0.0.0.0:9001", "/data"]
@@ -24,51 +22,32 @@ services:
       - 9001:9001
 
   ## Prefect
-  server:
-    image: prefecthq/prefect:2-python3.12
+  prefect-server:
+    build: ./prefect
     restart: always
-    volumes:
-      - prefect:/root/.prefect
-      - "./flows:/root/flows"
-    entrypoint: ["/opt/prefect/entrypoint.sh", "prefect", "server", "start"]
     environment:
       - PREFECT_UI_URL=http://127.0.0.1:4200/api
       - PREFECT_API_URL=http://127.0.0.1:4200/api
       - PREFECT_SERVER_API_HOST=0.0.0.0
       - PREFECT_API_DATABASE_CONNECTION_URL=postgresql+asyncpg://postgres:postgres@database:5432/prefect
+    volumes:
+      - "./prefect/flows:/opt/prefect/flows"
     ports:
       - 4200:4200
     depends_on:
       - database
 
-  ## Prefect Agent
-  agent-1:
-    image: prefecthq/prefect:2-python3.12
-    restart: always
-    entrypoint: ["/opt/prefect/entrypoint.sh", "prefect", "worker", "start"]
-    environment:
-      - PREFECT_API_URL=http://server:4200/api
-
-  agent-2:
-    image: prefecthq/prefect:2-python3.12
-    restart: always
-    entrypoint: ["/opt/prefect/entrypoint.sh", "prefect", "worker", "start"]
-    environment:
-      - PREFECT_API_URL=http://server:4200/api
-
   mlflow:
     restart: always
     build: ./mlflow
-    depends_on:
-      - minio
-      - database
     ports:
       - "5000:5000"
     environment:
       - PG_CONN=postgres:postgres@database:5432/mlflow
       - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
-
-
+    depends_on:
+      - minio
+      - database
 
 volumes:
   prefect:

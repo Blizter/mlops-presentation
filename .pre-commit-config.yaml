@@ -28,5 +28,5 @@ repos:
         name: export requirements
         language: system
         pass_filenames: false
-        entry: bash -c "poetry export -f requirements.txt --without-hashes  | awk '{ print $1 }' FS=';' > requirements.txt"
+        entry: bash -c "poetry export -f requirements.txt --without-hashes  | awk '{ print $1 }' FS=';' > prefect/requirements.txt"
         files: ^(pyproject.toml|poetry.lock)$
