@@ -729,6 +729,17 @@ reauth = ["pyu2f (>=0.1.5)"]
 requests = ["requests (>=2.20.0,<3.0.0.dev0)"]
 
 [[package]]
+name = "graphql-core"
+version = "3.2.3"
+description = "GraphQL implementation for Python, a port of GraphQL.js, the JavaScript reference implementation for GraphQL."
+optional = false
+python-versions = ">=3.6,<4"
+files = [
+    {file = "graphql-core-3.2.3.tar.gz", hash = "sha256:06d2aad0ac723e35b1cb47885d3e5c45e956a53bc1b209a9fc5369007fe46676"},
+    {file = "graphql_core-3.2.3-py3-none-any.whl", hash = "sha256:5766780452bd5ec8ba133f8bf287dc92713e3868ddd83aee4faab9fc3e303dc3"},
+]
+
+[[package]]
 name = "graphviz"
 version = "0.20.3"
 description = "Simple Python interface for Graphviz"
@@ -1604,6 +1615,24 @@ snowflake = ["prefect-snowflake"]
 sqlalchemy = ["prefect-sqlalchemy"]
 
 [[package]]
+name = "prefect-github"
+version = "0.2.5"
+description = "Prefect integrations interacting with GitHub"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "prefect_github-0.2.5-py3-none-any.whl", hash = "sha256:cea4acd76c4c84a694b4111021d43958478fdb8f14125bb120e85e54448b7c50"},
+    {file = "prefect_github-0.2.5.tar.gz", hash = "sha256:6d7194e3e9e93405d50ed07f4fab37e6c351c38689f9566d013c3065acab6c40"},
+]
+
+[package.dependencies]
+prefect = ">=2.13.5,<3.0.0"
+sgqlc = ">=15.0"
+
+[package.extras]
+dev = ["coverage", "interrogate", "mkdocs", "mkdocs-gen-files", "mkdocs-material", "mkdocstrings[python]", "mock", "mypy", "pillow", "pre-commit", "pytest", "pytest-asyncio", "pytest-xdist"]
+
+[[package]]
 name = "psycopg2-binary"
 version = "2.9.9"
 description = "psycopg2 - Python-PostgreSQL Database Adapter"
@@ -2406,6 +2435,24 @@ docs = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments
 testing = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "importlib-metadata", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "mypy (==1.9)", "packaging (>=23.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.1)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-home (>=0.5)", "pytest-mypy", "pytest-perf", "pytest-ruff (>=0.2.1)", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel"]
 
 [[package]]
+name = "sgqlc"
+version = "16.3"
+description = "Simple GraphQL Client"
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "sgqlc-16.3-py3-none-any.whl", hash = "sha256:89d468386a4ba4b5ade991623228b6fb0a25bea1f25643ccac130fb3ef565b72"},
+    {file = "sgqlc-16.3.tar.gz", hash = "sha256:be08857775aa3e65ef7b2c1f0cdcc65dd5794907b162b393c189187fee664558"},
+]
+
+[package.dependencies]
+graphql-core = ">=3.1.7,<4.0.0"
+
+[package.extras]
+requests = ["requests"]
+websocket = ["websocket-client"]
+
+[[package]]
 name = "shellingham"
 version = "1.5.4"
 description = "Tool to Detect Surrounding Shell"
@@ -2845,4 +2892,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "e5c209c25ace46e9b30ca20636cd4da085fbee9e45315d279b529dfd38cf59dd"
+content-hash = "89dcf08aa7f99582295ddc9a813ca0ec92aa8ecbb58ed9747777485029a1ad2f"

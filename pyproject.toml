@@ -16,6 +16,7 @@ flake8 = "^7.0.0"
 flake8-pyproject = "^1.2.3"
 pre-commit = "^3.7.1"
 prefect = "^2.19.2"
+prefect-github = "^0.2.5"
 
 [tool.black]
 line-length = 130

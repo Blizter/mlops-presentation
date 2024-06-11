@@ -1,4 +1,12 @@
 repos:
+  # - repo: local
+  #   hooks:
+  #     - id: export-req
+  #       name: export requirements
+  #       language: system
+  #       pass_filenames: false
+  #       entry: bash -c "poetry export -f requirements.txt --without-hashes  | awk '{ print $1 }' FS=';' > prefect/requirements.txt"
+  #       files: ^(pyproject.toml|poetry.lock)$
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -22,11 +30,3 @@ repos:
         entry: flake8p
         args: ["--toml-config", "./pyproject.toml"]
         additional_dependencies: [Flake8-pyproject]
-  - repo: local
-    hooks:
-      - id: export-req
-        name: export requirements
-        language: system
-        pass_filenames: false
-        entry: bash -c "poetry export -f requirements.txt --without-hashes  | awk '{ print $1 }' FS=';' > prefect/requirements.txt"
-        files: ^(pyproject.toml|poetry.lock)$

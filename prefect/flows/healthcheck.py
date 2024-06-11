@@ -21,10 +21,6 @@ def log_platform_info():
 
 
 @flow
-def healthcheck():
+def health_check():
     hi = say_hi()
     log_platform_info(wait_for=[hi])
-
-
-if __name__ == "__main__":
-    healthcheck()

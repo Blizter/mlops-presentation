@@ -1,0 +1,54 @@
+###
+### A complete description of a Prefect Deployment for flow 'health-check'
+###
+name: Health Check
+description: null
+version: 78fd83e14851f41b922c0bb732e9fe35
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: default-agent-pool
+tags: []
+parameters: {}
+schedule: null
+schedules: []
+is_schedule_active: null
+infra_overrides: {}
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: health-check
+manifest_path: null
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  _block_document_id: d112c2b9-a3c3-4823-a3c4-70ed54772822
+  _block_document_name: anonymous-2ddab9dc-ab50-45ae-9fed-a6cf5023777e
+  _is_anonymous: true
+  block_type_slug: process
+  _block_type_slug: process
+storage:
+  repository_url: https://github.com/Blizter/mlops-presentation.git
+  reference: null
+  credentials: null
+  _block_document_id: 68c21ab1-1247-4586-888e-8200405c6e60
+  _block_document_name: mlops-presentation
+  _is_anonymous: false
+  block_type_slug: github-repository
+  _block_type_slug: github-repository
+path: ''
+entrypoint: prefect/flows/healthcheck.py:health_check
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties: {}
+  required: null
+  definitions: null
+timestamp: '2024-06-11T00:11:49.551422+00:00'
+triggers: []
+enforce_parameter_schema: null

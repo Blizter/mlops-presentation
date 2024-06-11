@@ -12,6 +12,7 @@ services:
     volumes:
       - db:/var/lib/postgresql/data
       - ./pg/pg-init.sh:/docker-entrypoint-initdb.d/create-multiple-postgresql-databases.sh
+
   minio:
     image: minio/minio:latest
     entrypoint: ["minio", "server", "--address", "0.0.0.0:9000", "--console-address", "0.0.0.0:9001", "/data"]
