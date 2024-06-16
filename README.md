@@ -1,19 +1,47 @@
 # mlops-presentation
 
-Goal:
+## pre-requisites and setup
 
-## Solution Used
+  1. Fork this repository
+  1. create GitHub PAT
+  2. install docker desktop
+  3. install terraform
+  4. local dev environment
 
-### prefect
+Goal: Functioning example to demonstrate an ML Ops architecture locally
 
-### mlflow
+## Tech stack for the demo
 
-### minio
+### Infrastructure as Code
 
-## Model
+#### Terraform
 
-### Ingestion
+### Container Orchestration
 
-### Training
+#### Kubernetes
 
-### Deployment
+### GitOps
+
+#### ArgoCD
+
+### Workflow Orchestration
+
+#### Prefect
+
+### Model and Experiment tracking
+
+#### mlflow
+
+### Storage Solutions
+
+#### PostgreSQL
+
+#### Minio
+
+### Model Development
+
+#### Ingestion
+
+#### Training
+
+#### Deployment
