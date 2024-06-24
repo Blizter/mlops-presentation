@@ -1,0 +1,8 @@
+---
+spec:
+  destination:
+    name: in-cluster
+  project: default
+  source:
+    repoURL: git@github.com:Blizter/mlops-presentation.git
+    targetRevision: HEAD

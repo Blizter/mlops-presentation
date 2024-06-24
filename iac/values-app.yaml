@@ -1,0 +1,18 @@
+applications:
+- name: mlops-presentation
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  project: default
+  sources:
+  - repoURL: git@github.com:${gh_username}/mlops-presentation.git
+    path: gitops/cluster
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+  revisionHistoryLimit: null

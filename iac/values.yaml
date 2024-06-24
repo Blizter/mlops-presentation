@@ -1,0 +1,28 @@
+# https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
+
+global:
+  logging:
+    format: json
+
+configs:
+  repositories:
+    mlops-presentation:
+      url: git@github.com:${gh_username}/mlops-presentation.git
+      name: mlops-presentation
+      type: git
+  cm:
+    accounts.image-updater: apiKey
+    configManagementPlugins: |
+      - name: kustomize-enable-helm
+        generate:
+          command: [ "sh", "-c" ]
+          args: [ "kustomize build --enable-helm" ]
+  params:
+    server.insecure: true
+  credentialTemplates:
+    ssh-creds:
+      url: git@github.com:${gh_username}/mlops-presentation.git
+      sshPrivateKey: |
+        %{ for line in deploy_key ~}
+          ${line}
+        %{ endfor ~}
