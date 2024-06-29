@@ -20,15 +20,8 @@ resource "helm_release" "argocd" {
 
   set_sensitive {
     name  = "configs.secret.argocdServerAdminPassword"
-    value = bcrypt(random_password.argocd_admin_password.result)
+    value = bcrypt("AdminLocal")
   }
-
-  provisioner "local-exec" {
-    when    = destroy
-    command = "kubectl delete ns argocd && kubectl delete all -A -l app.kubernetes.io/managed-by=Helm"
-
-  }
-
   lifecycle {
     ignore_changes = all
   }

@@ -1,3 +1,4 @@
 variable "github_username" {
-  type = string
+  type    = string
+  default = "Blizter"
 }
