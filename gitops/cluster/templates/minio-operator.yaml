@@ -14,7 +14,7 @@ spec:
   project: "{{.Values.spec.project}}"
   source:
     repoURL: 'https://operator.min.io'
-    targetRevision: 5.0.3
+    targetRevision: 5.0.15
     chart: minio-operator
     # helm:
     #   values: |
