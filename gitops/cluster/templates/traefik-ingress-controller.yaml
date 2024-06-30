@@ -1,0 +1,27 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik-balancer-controller
+  namespace: argocd
+  labels:
+    name: traefik-balancer-controller
+    purpose: network-components
+spec:
+  destination:
+    name: "{{.Values.spec.destination.name}}"
+    namespace: traefik
+  project: "{{.Values.spec.project}}"
+  source:
+    repoURL: 'https://traefik.github.io/traefik-helm-chart'
+    targetRevision: 28.3.0
+    chart: traefik
+    # helm:
+    #   values: |
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

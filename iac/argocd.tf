@@ -1,10 +1,20 @@
+resource "tls_private_key" "github" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "github_user_ssh_key" "argocd_key" {
+  title = "ArgoCD deploy key"
+  key   = tls_private_key.github.public_key_openssh
+}
+
 resource "helm_release" "argocd" {
   name             = "argocd"
   create_namespace = true
   namespace        = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
-  version          = "7.1.3"
+  version          = "7.3.3"
 
   force_update    = true
   recreate_pods   = true
@@ -14,7 +24,7 @@ resource "helm_release" "argocd" {
     templatefile("${path.module}/values.yaml",
       {
         gh_username = var.github_username,
-        deploy_key  = split("\n", tls_private_key.argocd_deploy_key.private_key_pem),
+        deploy_key  = split("\n", tls_private_key.github.private_key_pem),
     })
   ]
   set_sensitive {

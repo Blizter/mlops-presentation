@@ -6,10 +6,18 @@ global:
 
 configs:
   repositories:
-    mlops-presentation:
-      url: git@github.com:${gh_username}/mlops-presentation.git
-      name: mlops-presentation
-      type: git
+    traefik:
+      url: https://traefik.github.io/charts
+      name: traefik
+      type: helm
+    # minio-operator:
+    #   url: https://operator.min.io
+    #   name: minio-operator
+    #   type: helm
+    # mlops-presentation:
+    #   url: git@github.com:${gh_username}/mlops-presentation.git
+    #   name: mlops-presentation
+    #   type: git
   cm:
     accounts.image-updater: apiKey
     configManagementPlugins: |
@@ -19,10 +27,3 @@ configs:
           args: [ "kustomize build --enable-helm" ]
   params:
     server.insecure: true
-  credentialTemplates:
-    ssh-creds:
-      url: git@github.com:${gh_username}/mlops-presentation.git
-      sshPrivateKey: |-
-        %{ for line in deploy_key ~}
-          ${line}
-        %{ endfor ~}
