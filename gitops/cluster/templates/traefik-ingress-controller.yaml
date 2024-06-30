@@ -13,7 +13,7 @@ spec:
     namespace: traefik
   project: "{{.Values.spec.project}}"
   source:
-    repoURL: 'https://traefik.github.io/traefik-helm-chart'
+    repoURL: 'https://traefik.github.io/charts'
     targetRevision: 28.3.0
     chart: traefik
     # helm:
