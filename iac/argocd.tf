@@ -1,6 +1,5 @@
 resource "tls_private_key" "github" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
+  algorithm = "ED25519"
 }
 
 resource "github_user_ssh_key" "argocd_key" {
