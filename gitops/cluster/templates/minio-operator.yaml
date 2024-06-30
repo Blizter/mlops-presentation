@@ -1,0 +1,27 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio-operator
+  namespace: argocd
+  labels:
+    name: minio-operator
+    purpose: bucket-storage
+spec:
+  destination:
+    name: "{{.Values.spec.destination.name}}"
+    namespace: minio-operator
+  project: "{{.Values.spec.project}}"
+  source:
+    repoURL: 'https://operator.min.io'
+    targetRevision: 5.0.3
+    chart: minio-operator
+    # helm:
+    #   values: |
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
