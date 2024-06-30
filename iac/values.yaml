@@ -10,10 +10,10 @@ configs:
       url: https://traefik.github.io/charts
       name: traefik
       type: helm
-    # minio-operator:
-    #   url: https://operator.min.io
-    #   name: minio-operator
-    #   type: helm
+    minio-operator:
+      url: https://operator.min.io
+      name: minio-operator
+      type: helm
     # mlops-presentation:
     #   url: git@github.com:${gh_username}/mlops-presentation.git
     #   name: mlops-presentation
