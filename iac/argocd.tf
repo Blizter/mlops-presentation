@@ -13,16 +13,13 @@ resource "helm_release" "argocd" {
   values = [
     templatefile("${path.module}/values.yaml",
       {
-        gh_username = var.github_username
+        gh_username = var.github_username,
+        deploy_key  = split("\n", tls_private_key.argocd_deploy_key.private_key_pem),
     })
   ]
   set_sensitive {
     name  = "configs.secret.argocdServerAdminPassword"
     value = bcrypt("admin")
-  }
-  set_sensitive {
-    name  = "configs.credentialTemplates.ssh-creds.sshPrivateKey"
-    value = tls_private_key.argocd_deploy_key.private_key_pem
   }
 }
 
