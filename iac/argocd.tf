@@ -13,17 +13,16 @@ resource "helm_release" "argocd" {
   values = [
     templatefile("${path.module}/values.yaml",
       {
-        gh_username = var.github_username,
-        deploy_key  = split("\n", tls_private_key.argocd_deploy_key.private_key_pem)
+        gh_username = var.github_username
     })
   ]
-
   set_sensitive {
     name  = "configs.secret.argocdServerAdminPassword"
-    value = bcrypt("AdminLocal")
+    value = bcrypt("admin")
   }
-  lifecycle {
-    ignore_changes = all
+  set_sensitive {
+    name  = "configs.credentialTemplates.ssh-creds.sshPrivateKey"
+    value = tls_private_key.argocd_deploy_key.private_key_pem
   }
 }
 
@@ -40,10 +39,5 @@ resource "helm_release" "argocd-app-of-apps" {
         gh_username = var.github_username
     })
   ]
-
-  lifecycle {
-    ignore_changes = all
-  }
-
   depends_on = [helm_release.argocd]
 }

@@ -22,7 +22,3 @@ configs:
   credentialTemplates:
     ssh-creds:
       url: git@github.com:${gh_username}/mlops-presentation.git
-      sshPrivateKey: |-
-        %{ for line in deploy_key ~}
-          ${line}
-        %{ endfor ~}

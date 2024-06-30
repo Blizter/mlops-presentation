@@ -1,9 +1,9 @@
 applications:
 - name: mlops-presentation
   namespace: argocd
+  project: default
   finalizers:
   - resources-finalizer.argocd.argoproj.io
-  project: default
   sources:
   - repoURL: git@github.com:${gh_username}/mlops-presentation.git
     path: gitops/cluster
