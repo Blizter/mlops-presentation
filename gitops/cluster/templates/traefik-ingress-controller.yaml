@@ -21,8 +21,7 @@ spec:
         ingressRoute:
           dashboard:
             enabled: true
-            annotations:
-              traefik.ingress.kubernetes.io/router.entrypoints: web
+            matchRule: Host(`localhost`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
 
 
 

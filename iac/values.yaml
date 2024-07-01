@@ -42,5 +42,5 @@ server:
     ingressClassName: traefik
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: web
-    hostname: argocd.localhost
-    path: /
+    hostname: localhost
+    path: /argocd
