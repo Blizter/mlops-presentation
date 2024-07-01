@@ -16,6 +16,11 @@ spec:
     repoURL: 'https://traefik.github.io/charts'
     targetRevision: 28.3.0
     chart: traefik
+    helm:
+      values: |
+        dashboard:
+          enable: true
+          ingressROute: true
   syncPolicy:
     automated:
       prune: true

@@ -34,3 +34,15 @@ configs:
         %{ for line in deploy_key ~}
           ${line}
         %{ endfor ~}
+
+server:
+  service:
+    type: NodePort
+  ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: web
+      ingressClassName: traefik
+      hosts:
+        - argocd.localhost
+  https: true
