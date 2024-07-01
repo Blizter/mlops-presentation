@@ -16,14 +16,14 @@ spec:
     repoURL: 'https://traefik.github.io/charts'
     targetRevision: 28.3.0
     chart: traefik
-    helm:
-      values: |
-        providers:
-          kubernetesIngress:
-            enabled: true
-        ingressRoute:
-          dashboard:
-            enabled: true
+    # helm:
+    #   values: |
+    #     providers:
+    #       kubernetesIngress:
+    #         enabled: true
+    #     ingressRoute:
+    #       dashboard:
+    #         enabled: true
   syncPolicy:
     automated:
       prune: true
