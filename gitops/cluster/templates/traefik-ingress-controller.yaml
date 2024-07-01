@@ -20,7 +20,7 @@ spec:
       values: |
         dashboard:
           enable: true
-          ingressROute: true
+          ingressRoute: true
   syncPolicy:
     automated:
       prune: true
