@@ -18,14 +18,14 @@ spec:
     chart: operator
     helm:
       values: |
-        consoleIngress:
-          enabled: true
-          ingressClassName: traefik
-          annotations:
+        console:
+          ingress:
+            enabled: true
+            ingressClassName: traefik
+            annotations:
             traefik.ingress.kubernetes.io/router.entrypoints: web
-          hosts:
-            - minio.localhost
-          path: /
+            host: minio-console.localhost
+
   syncPolicy:
     automated:
       prune: true
