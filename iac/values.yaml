@@ -18,12 +18,27 @@ configs:
     #   url: git@github.com:${gh_username}/mlops-presentation.git
     #   name: mlops-presentation
     #   type: git
+
   cm:
-    accounts.image-updater: apiKey
+    url: "argocd.localhost"
     configManagementPlugins: |
       - name: kustomize-enable-helm
         generate:
           command: [ "sh", "-c" ]
           args: [ "kustomize build --enable-helm" ]
+
   params:
     server.insecure: true
+
+  server:
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: web
+      ingressClassName: traefik
+      hosts:
+        - argocd.localhost
+      paths:
+        - /
+      pathType: Prefix
+      https: false
