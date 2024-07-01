@@ -16,46 +16,9 @@ spec:
     repoURL: 'https://traefik.github.io/charts'
     targetRevision: 28.3.0
     chart: traefik
-    helm:
-      values: |
-        ingressRoute:
-          dashboard:
-            enabled: false
-        additionalArguments:
-        - "--api.insecure=true"
-        extraObjects:
-          - apiVersion: v1
-            kind: Service
-            metadata:
-              name: traefik-api
-            spec:
-              type: ClusterIP
-              selector:
-                app.kubernetes.io/name: traefik
-                app.kubernetes.io/instance: traefik-default
-              ports:
-              - port: 8080
-                name: traefik
-                targetPort: 9000
-                protocol: TCP
-          - apiVersion: networking.k8s.io/v1
-            kind: Ingress
-            metadata:
-              name: traefik-dashboard
-              annotations:
-                traefik.ingress.kubernetes.io/router.entrypoints: web
-            spec:
-              rules:
-              - host: traefik.localhost
-                http:
-                  paths:
-                  - path: /
-                    pathType: Prefix
-                    backend:
-                      service:
-                        name: traefik-api
-                        port:
-                          name: traefik
+    # helm:
+    #   values: |
+
 
 
 
