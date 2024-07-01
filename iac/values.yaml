@@ -14,11 +14,6 @@ configs:
       url: https://operator.min.io
       name: minio-operator
       type: helm
-    # mlops-presentation:
-    #   url: git@github.com:${gh_username}/mlops-presentation.git
-    #   name: mlops-presentation
-    #   type: git
-
   cm:
     configManagementPlugins: |
       - name: kustomize-enable-helm
@@ -28,18 +23,3 @@ configs:
 
   params:
     server.insecure: true
-
-  # server:
-  #   service:
-  #     type: NodePort
-  #   ingress:
-  #     enabled: true
-  #     annotations:
-  #       traefik.ingress.kubernetes.io/router.entrypoints: web
-  #     ingressClassName: traefik
-  #     hosts:
-  #       - argocd.localhost
-  #     paths:
-  #       - /
-  #     pathType: Prefix
-  #     https: false

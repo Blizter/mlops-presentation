@@ -16,9 +16,6 @@ spec:
     repoURL: 'https://operator.min.io'
     targetRevision: 5.0.15
     chart: operator
-    # helm:
-    #   values: |
-
   syncPolicy:
     automated:
       prune: true
