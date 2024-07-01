@@ -43,7 +43,7 @@ spec:
             metadata:
               name: traefik-dashboard
               annotations:
-                traefik.ingress.kubernetes.io/router.entrypoints: webs
+                traefik.ingress.kubernetes.io/router.entrypoints: web
             spec:
               rules:
               - host: traefik.localhost
