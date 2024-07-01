@@ -24,6 +24,7 @@ spec:
             matchRule: Host(`localhost`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
             entryPoints:
               - web
+              - traefik
 
 
 
