@@ -1,6 +1,5 @@
 resource "tls_private_key" "github" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
+  algorithm = "ED25519"
 }
 
 resource "github_user_ssh_key" "argocd_key" {
@@ -24,7 +23,7 @@ resource "helm_release" "argocd" {
     templatefile("${path.module}/values.yaml",
       {
         gh_username = var.github_username,
-        deploy_key  = split("\n", tls_private_key.github.private_key_pem),
+        deploy_key  = split("\n", tls_private_key.github.private_key_pem)
     })
   ]
   set_sensitive {
