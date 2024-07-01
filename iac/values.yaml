@@ -20,7 +20,6 @@ configs:
     #   type: git
 
   cm:
-    url: "argocd.localhost"
     configManagementPlugins: |
       - name: kustomize-enable-helm
         generate:
