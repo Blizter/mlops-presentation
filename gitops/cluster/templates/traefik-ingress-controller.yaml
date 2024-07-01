@@ -18,9 +18,12 @@ spec:
     chart: traefik
     helm:
       values: |
-        dashboard.enabled=true
-        dashboard.domain=dashboard.localhost
-
+        providers:
+          kubernetesIngress:
+            enabled: true
+        ingressRoute:
+          dashboard:
+            enabled: true
   syncPolicy:
     automated:
       prune: true
