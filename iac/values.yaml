@@ -36,13 +36,11 @@ configs:
         %{ endfor ~}
 
 server:
-  service:
-    type: NodePort
   ingress:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: web
-      ingressClassName: traefik
-      hosts:
-        - argocd.localhost
-  https: true
+    enabled: true
+    https: false
+    ingressClassName: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: web
+    hostname: argocd.localhost
+    path: /
