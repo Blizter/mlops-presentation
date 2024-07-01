@@ -16,6 +16,23 @@ spec:
     repoURL: 'https://operator.min.io'
     targetRevision: 5.0.15
     chart: operator
+    helm:
+      values: |
+        ingress:
+          enabled: true
+          ingressClassName: traefik
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web
+          hosts:
+            - minio.localhost
+        consoleIngress:
+          enabled: true
+          ingressClassName: traefik
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web
+          hosts:
+            - minio.localhost
+          path: /console
   syncPolicy:
     automated:
       prune: true
