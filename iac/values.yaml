@@ -30,6 +30,8 @@ configs:
     server.insecure: true
 
   server:
+    service:
+      type: NodePort
     ingress:
       enabled: true
       annotations:
