@@ -21,6 +21,7 @@ configs:
   params:
     server.insecure: true
   cm:
+    url: "http://argocd.localhost"
     accounts.image-updater: apiKey
     configManagementPlugins: |
       - name: kustomize-enable-helm
@@ -42,5 +43,5 @@ server:
     ingressClassName: traefik
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: web
-    hostname: localhost
-    path: /argocd
+    hostname: argocd.localhost
+    path: /

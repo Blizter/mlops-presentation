@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: traefik-ingress-controller
+  name: traefik
   namespace: argocd
   labels:
-    name: traefik-ingress-controller
+    name: traefik
     purpose: network-components
 spec:
   destination:
@@ -21,12 +21,10 @@ spec:
         ingressRoute:
           dashboard:
             enabled: true
-            matchRule: Host(`localhost`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+            matchRule: Host(`traefik.localhost`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
             entryPoints:
               - web
               - traefik
-
-
 
   syncPolicy:
     automated:
