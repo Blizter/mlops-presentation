@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: 'https://operator.min.io'
     targetRevision: 5.0.15
-    chart: operator
+    chart: tenant
     helm:
       values: |
         console:
@@ -25,7 +25,7 @@ spec:
             annotations:
             traefik.ingress.kubernetes.io/router.entrypoints: web
             host: minio.localhost
-            path: /operator
+            path: /tenant
 
   syncPolicy:
     automated:
