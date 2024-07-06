@@ -23,7 +23,7 @@ spec:
             enabled: true
             ingressClassName: traefik
             annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: web
+              traefik.ingress.kubernetes.io/router.entrypoints: web
             host: minio.localhost
             path: /operator
 
