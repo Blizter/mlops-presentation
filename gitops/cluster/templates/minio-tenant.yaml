@@ -18,14 +18,14 @@ spec:
     chart: tenant
     helm:
       values: |
-        console:
-          ingress:
-            enabled: true
-            ingressClassName: traefik
-            annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: web
-            host: minio.localhost
-            path: /tenant
+        ingress:
+          console:
+              enabled: true
+              ingressClassName: traefik
+              annotations:
+                traefik.ingress.kubernetes.io/router.entrypoints: web
+              host: minio.localhost
+              path: /tenant
 
   syncPolicy:
     automated:
