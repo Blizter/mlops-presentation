@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: minio-operator
+  name: minio-tenant
   namespace: argocd
   labels:
-    name: minio-operator
+    name: minio-tenant
     purpose: bucket-storage
 spec:
   destination:
