@@ -19,12 +19,19 @@ spec:
     helm:
       values: |
         ingress:
+          api:
+            enabled: true
+            ingressClassName: traefik
+            annotations:
+                traefik.ingress.kubernetes.io/router.entrypoints: web
+            host: minio.localhost
+
           console:
               enabled: true
               ingressClassName: traefik
               annotations:
-                traefik.ingress.kubernetes.io/router.entrypoints: websecure
-              host: minio.tenant.localhost
+                traefik.ingress.kubernetes.io/router.entrypoints: web
+              host: minio.console.localhost
 
   syncPolicy:
     automated:
