@@ -25,15 +25,23 @@ spec:
           api:
             enabled: true
             ingressClassName: traefik
-            annotations:
-                traefik.ingress.kubernetes.io/router.entrypoints: websecure
             host: minio.api.localhost
+            annotations:
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            tls:
+              - secretName: minio-tls
+                hosts:
+                  - minio.api.localhost
           console:
               enabled: true
               ingressClassName: traefik
+              host: minio.console.localhost
               annotations:
                 traefik.ingress.kubernetes.io/router.entrypoints: websecure
-              host: minio.console.localhost
+              tls:
+              - secretName: minio-tls
+                hosts:
+                  - minio.console.localhost
 
   syncPolicy:
     automated:
