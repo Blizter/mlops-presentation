@@ -22,7 +22,7 @@ spec:
           name: myminio-env-configuration
           accessKey: minio
           secretKey: minio
-        tenant
+        tenant:
           name: minio
           requestAutoCert: false
         ingress:
