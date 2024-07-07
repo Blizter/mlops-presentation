@@ -18,10 +18,6 @@ spec:
     chart: tenant
     helm:
       values: |
-        secrets:
-          name: myminio-env-configuration
-          accessKey: minio
-          secretKey: minio
         tenant:
           name: minio
           requestAutoCert: false
