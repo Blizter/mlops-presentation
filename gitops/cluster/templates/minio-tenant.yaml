@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     name: "{{.Values.spec.destination.name}}"
-    namespace: minio-operator
+    namespace: minio-tenant
   project: "{{.Values.spec.project}}"
   source:
     repoURL: 'https://operator.min.io'
