@@ -26,13 +26,13 @@ spec:
             enabled: true
             ingressClassName: traefik
             annotations:
-                traefik.ingress.kubernetes.io/router.entrypoints: web
+                traefik.ingress.kubernetes.io/router.entrypoints: websecure
             host: minio.api.localhost
           console:
               enabled: true
               ingressClassName: traefik
               annotations:
-                traefik.ingress.kubernetes.io/router.entrypoints: web
+                traefik.ingress.kubernetes.io/router.entrypoints: websecure
               host: minio.console.localhost
 
   syncPolicy:
