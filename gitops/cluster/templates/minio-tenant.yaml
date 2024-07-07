@@ -20,7 +20,6 @@ spec:
       values: |
         tenant:
           name: minio
-          requestAutoCert: false
 
         ingress:
           api:
