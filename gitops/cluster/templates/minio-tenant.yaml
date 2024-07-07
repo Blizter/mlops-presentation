@@ -18,14 +18,18 @@ spec:
     chart: tenant
     helm:
       values: |
+        secrets:
+          name: myminio-env-configuration
+          accessKey: minio
+          secretKey: minio
+        tenant
+          name: minio
+          certificate:
+            requestAutoCert: true
         ingress:
           api:
             enabled: true
             ingressClassName: traefik
-            tls:
-            - hosts:
-              - minio.localhost
-              secretName: myminio-tls
             annotations:
                 traefik.ingress.kubernetes.io/router.entrypoints: websecure
             host: minio.localhost
@@ -33,10 +37,6 @@ spec:
           console:
               enabled: true
               ingressClassName: traefik
-              tls:
-              - hosts:
-                - minio.console.localhost
-                secretName: myminio-tls
               annotations:
                 traefik.ingress.kubernetes.io/router.entrypoints: websecure
               host: minio.console.localhost
