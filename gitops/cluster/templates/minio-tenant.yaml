@@ -24,8 +24,7 @@ spec:
           secretKey: minio
         tenant
           name: minio
-          certificate:
-            requestAutoCert: true
+          requestAutoCert: false
         ingress:
           api:
             enabled: true
