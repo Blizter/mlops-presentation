@@ -28,6 +28,7 @@ spec:
             host: minio.api.localhost
             annotations:
               traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls: "true"
             tls:
               - secretName: minio-tls
                 hosts:
@@ -38,6 +39,7 @@ spec:
               host: minio.console.localhost
               annotations:
                 traefik.ingress.kubernetes.io/router.entrypoints: websecure
+                traefik.ingress.kubernetes.io/router.tls: "true"
               tls:
               - secretName: minio-tls
                 hosts:
