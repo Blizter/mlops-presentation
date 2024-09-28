@@ -1,0 +1,6 @@
+{
+  "yaml.schemas": {
+    "file:///home/ehammel/.vscode-server/extensions/davidanson.vscode-markdownlint-0.56.0/markdownlint-cli2-config-schema.json": "file:///home/ehammel/projects/personal/mlops-presentation/iac/cluster.yaml"
+  },
+  "yaml.schemaStore.enable": false
+}

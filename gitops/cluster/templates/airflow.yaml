@@ -1,0 +1,26 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: airflow
+  namespace: airflow
+  labels:
+    name: airflow
+    purpose: workflow-orchestration
+spec:
+  project: "{{.Values.spec.project}}"
+  source:
+    repoURL: "{{.Values.spec.source.repoURL}}"
+    targetRevision: main
+    path: workloads/airflow
+    kustomize:
+      version: 5.2.1
+  destination:
+    name: "{{.Values.spec.destination.name}}"
+    namespace: airflow
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

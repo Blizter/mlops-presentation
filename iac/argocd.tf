@@ -14,7 +14,7 @@ resource "helm_release" "argocd" {
   namespace        = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
-  version          = "7.3.3"
+  version          = "7.6.1"
 
   force_update    = true
   recreate_pods   = true
