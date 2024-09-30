@@ -13,6 +13,6 @@ applications:
     namespace: argocd
   syncPolicy:
     automated:
-      prune: false
+      prune: true
       selfHeal: false
   revisionHistoryLimit: null
