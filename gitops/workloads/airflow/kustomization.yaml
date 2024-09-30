@@ -1,0 +1,5 @@
+helmCharts:
+- name: airflow
+  repo: https://itzg.github.io/minecraft-server-charts
+  releaseName: airflow
+  version: 8.9.0
