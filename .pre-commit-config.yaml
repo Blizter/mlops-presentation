@@ -1,12 +1,4 @@
 repos:
-  # - repo: local
-  #   hooks:
-  #     - id: export-req
-  #       name: export requirements
-  #       language: system
-  #       pass_filenames: false
-  #       entry: bash -c "poetry export -f requirements.txt --without-hashes  | awk '{ print $1 }' FS=';' > prefect/requirements.txt"
-  #       files: ^(pyproject.toml|poetry.lock)$
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -14,3 +6,9 @@ repos:
       - id: check-yaml
       - id: check-toml
       - id: trailing-whitespace
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.8
+    hooks:
+      - id: ruff
+        args: [ --fix ]
+      - id: ruff-format

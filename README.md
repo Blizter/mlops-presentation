@@ -1,47 +1,34 @@
 # mlops-presentation
 
-## pre-requisites and setup
+# pre-requisites and setup
 
   1. Fork this repository
-  1. create GitHub PAT
-  2. install docker desktop
-  3. install terraform
-  4. local dev environment
+  2. [rye](https://rye.astral.sh/)
+  2. [terraform CLI](https://developer.hashicorp.com/terraform/install) or [tfenv](https://github.com/tfutils/tfenv) to manage version
+  2. [kustomize](https://kubectl.docs.kubernetes.io/installation/kustomize/)
 
 Goal: Functioning example to demonstrate an ML Ops architecture locally
 
-## Tech stack for the demo
+# Tech stack for the demo
 
-### Infrastructure as Code
+## Infra as Code (IaC) : Terraform
 
-#### Terraform
+## Container Orchestration : Kubernetes
 
-### Container Orchestration
+## GitOps : ArgoCD
 
-#### Kubernetes
+## Workflow Orchestration : Airflow
 
-### GitOps
+## Model Registry & Experiment tracking : mlflow
 
-#### ArgoCD
+# Model Development
 
-### Workflow Orchestration
+## Ingestion
 
-#### Prefect
+## Feature Engineering
 
-### Model and Experiment tracking
+## Training
 
-#### mlflow
+## Deployment
 
-### Storage Solutions
-
-#### PostgreSQL
-
-#### Minio
-
-### Model Development
-
-#### Ingestion
-
-#### Training
-
-#### Deployment
+## Inference
